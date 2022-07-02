@@ -7,11 +7,10 @@ import {
     PhoneIcon,
 } from '@heroicons/react/solid'
 import axios from 'axios'
+import { Button, Card, Badge } from 'flowbite-react'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import Badge from '../components/badge'
-import Card from '../components/card'
 import EditFee from '../components/edit-fee'
 import ExtendDueDate from '../components/extend-due-date'
 import Modal from '../components/modal'
@@ -47,10 +46,6 @@ const ViewStudent = () => {
     useEffect(() => {
         fetchStudentData(state?.state?.student?.id)
     }, [state])
-
-    useEffect(() => {
-        console.log(student)
-    }, [student])
 
     return (
         Object.keys(student).length > 0 && (
@@ -216,34 +211,37 @@ const ViewStudent = () => {
                                                 {moment().isBefore(
                                                     student.next_due
                                                 ) ? (
-                                                    <Badge
-                                                        color="green"
-                                                        message="Paid"
-                                                    />
+                                                    <Badge color="success">
+                                                        Paid
+                                                    </Badge>
                                                 ) : (
                                                     <Badge
-                                                        color="red"
-                                                        message="Unpaid"
-                                                    />
+                                                        color="failure"
+                                                        className="inline"
+                                                    >
+                                                        Unpaid
+                                                    </Badge>
                                                 )}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td className="pt-3">
-                                                <button
+                                                <Button
                                                     className="w-full btn-sm btn-info"
                                                     onClick={togglePaymentModal}
+                                                    size="xs"
                                                 >
                                                     Extend payment due
-                                                </button>
+                                                </Button>
                                             </td>
                                             <td className="pt-3">
-                                                <button
+                                                <Button
                                                     className="w-full btn-sm btn-info"
                                                     onClick={toggleFeeModal}
+                                                    size="xs"
                                                 >
                                                     Edit Fee
-                                                </button>
+                                                </Button>
                                             </td>
                                         </tr>
                                     </tbody>

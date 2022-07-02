@@ -12,8 +12,10 @@ import {
     UsersIcon,
 } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Menus = () => {
+    const { currentUser } = useSelector((state) => state.user)
     return (
         <div>
             <ul className="list-none">
@@ -129,15 +131,17 @@ const Menus = () => {
                     </div>
                     <div>
                         <ul className="py-2">
-                            <Link to="dashboard/users">
-                                <li className="p-2 group flex justify-between text-sm text-gray-400 hover:bg-sky-500 hover:text-white rounded-sm">
-                                    <div className="flex justify-start items-center space-x-2">
-                                        <UserIcon className="h-5 w-5 text-yellow-500 group-hover:text-white" />
-                                        <p>Users</p>
-                                    </div>
-                                    <ChevronRightIcon className="h-5 w-5" />
-                                </li>
-                            </Link>
+                            {currentUser && currentUser.role === 'super' && (
+                                <Link to="dashboard/users">
+                                    <li className="p-2 group flex justify-between text-sm text-gray-400 hover:bg-sky-500 hover:text-white rounded-sm">
+                                        <div className="flex justify-start items-center space-x-2">
+                                            <UserIcon className="h-5 w-5 text-yellow-500 group-hover:text-white" />
+                                            <p>Users</p>
+                                        </div>
+                                        <ChevronRightIcon className="h-5 w-5" />
+                                    </li>
+                                </Link>
+                            )}
                             <Link to="dashboard/leads">
                                 <li className="p-2 group flex justify-between text-sm text-gray-400 hover:bg-sky-500 hover:text-white rounded-sm">
                                     <div className="flex justify-start items-center space-x-2">
@@ -165,15 +169,17 @@ const Menus = () => {
                                     <ChevronRightIcon className="h-5 w-5" />
                                 </li>
                             </Link>
-                            <Link to="dashboard/payments">
-                                <li className="p-2 group flex justify-between text-sm text-gray-400 hover:bg-sky-500 hover:text-white rounded-sm">
-                                    <div className="flex justify-start items-center space-x-2">
-                                        <CreditCardIcon className="h-5 w-5 text-yellow-500 group-hover:text-white" />
-                                        <p>Payments</p>
-                                    </div>
-                                    <ChevronRightIcon className="h-5 w-5" />
-                                </li>
-                            </Link>
+                            {currentUser && currentUser.role === 'super' && (
+                                <Link to="dashboard/payments">
+                                    <li className="p-2 group flex justify-between text-sm text-gray-400 hover:bg-sky-500 hover:text-white rounded-sm">
+                                        <div className="flex justify-start items-center space-x-2">
+                                            <CreditCardIcon className="h-5 w-5 text-yellow-500 group-hover:text-white" />
+                                            <p>Payments</p>
+                                        </div>
+                                        <ChevronRightIcon className="h-5 w-5" />
+                                    </li>
+                                </Link>
+                            )}
                         </ul>
                     </div>
                 </li>

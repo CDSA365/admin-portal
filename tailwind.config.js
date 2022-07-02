@@ -5,6 +5,7 @@ module.exports = {
         './src/**/*.{js,jsx,ts,tsx}',
         './src/**/*.{html,js}',
         './node_modules/tw-elements/dist/js/**/*.js',
+        './node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
     ],
     purge: {
         safelist: [
@@ -51,5 +52,6 @@ module.exports = {
     plugins: [
         require('tw-elements/dist/plugin'),
         require('tailwind-scrollbar'),
+        require('flowbite/plugin'),
     ],
 }

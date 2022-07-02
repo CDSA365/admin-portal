@@ -12,7 +12,7 @@ import { capitalize } from '../helpers/helper'
 const LeadList = ({ data, deleteLead }) => {
     return (
         <Card
-            title={'Leads'}
+            title={`Leads (${data?.length})`}
             bodyClass="p-0 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-300"
         >
             <table className="table border-0 shadow-none">

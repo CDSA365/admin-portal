@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Table } from 'flowbite-react'
 import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -40,41 +41,51 @@ const ViewClass = () => {
                 </Card>
             </div>
             <div className="w-1/3 space-y-6">
-                <Card title={'Details'}>
-                    <table className="w-full">
-                        <tbody>
-                            <tr>
-                                <td className="p-2">Trainer:</td>
-                                <td className="p-2">{cls.trainer_name}</td>
-                            </tr>
-                            <tr>
-                                <td className="p-2">Start Time:</td>
-                                <td className="p-2">
+                <Card title={'Details'} className="p-0" bodyClass="p-0">
+                    <Table>
+                        <Table.Body className="divide-y">
+                            <Table.Row>
+                                <Table.Cell className="p-2">
+                                    Trainer:
+                                </Table.Cell>
+                                <Table.Cell className="p-2">
+                                    {cls.trainer_name}
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell className="p-2">
+                                    Start Time:
+                                </Table.Cell>
+                                <Table.Cell className="p-2">
                                     {moment(cls.start_time)
                                         .tz('Asia/Kolkata')
                                         .format('LLL')}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="p-2">End Time:</td>
-                                <td className="p-2">
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell className="p-2">
+                                    End Time:
+                                </Table.Cell>
+                                <Table.Cell className="p-2">
                                     {moment(cls.end_time)
                                         .tz('Asia/Kolkata')
                                         .format('LLL')}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="p-2">Type:</td>
-                                <td className="p-2 capitalize">{cls.type}</td>
-                            </tr>
-                            <tr>
-                                <td className="p-2">Status:</td>
-                                <td className="p-2 capitalize">
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell className="p-2">Type:</Table.Cell>
+                                <Table.Cell className="p-2 capitalize">
+                                    {cls.type}
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell className="p-2">Status:</Table.Cell>
+                                <Table.Cell className="p-2 capitalize">
                                     {cls.progress_state?.toLowerCase()}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </Table.Cell>
+                            </Table.Row>
+                        </Table.Body>
+                    </Table>
                 </Card>
                 <Card title={'Remarks'}>
                     <ListRemarks class_id={cls.id} />

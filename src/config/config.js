@@ -6,6 +6,8 @@ const BASE_URL = REACT_APP_API_BASE_URL
 export const config = {
     api: {
         createTrainer: BASE_URL + '/admin/trainer/create',
+        createUser: BASE_URL + '/admin/create',
+        deleteUser: BASE_URL + '/admin/delete',
         fetchAllTrainers: BASE_URL + '/admin/trainers/all',
         fetchTrainers: BASE_URL + '/admin/trainers',
         sendTrainerInvite: BASE_URL + '/admin/trainer/send-invite',
@@ -59,5 +61,6 @@ export const config = {
         verifyToken: BASE_URL + '/verify-token',
         deletePaymentEntry: BASE_URL + '/payments/delete',
         updateLead: BASE_URL + '/leads/update',
+        getAllUsers: BASE_URL + '/admin/all',
     },
 }

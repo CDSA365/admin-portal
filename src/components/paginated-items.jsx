@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 
-const PaginatedItems = ({ items, itemsPerPage, render }) => {
+const PaginatedItems = ({ items = [], itemsPerPage = 10, render }) => {
     const [currentItems, setCurrentItems] = useState(null)
     const [pageCount, setPageCount] = useState(0)
     const [itemOffset, setItemOffset] = useState(0)
@@ -22,11 +22,11 @@ const PaginatedItems = ({ items, itemsPerPage, render }) => {
             {currentItems && render(currentItems)}
             <ReactPaginate
                 breakLabel="..."
-                nextLabel=">>"
+                nextLabel="Next"
                 onPageChange={handlePageClick}
                 pageRangeDisplayed={5}
                 pageCount={pageCount}
-                previousLabel="<<"
+                previousLabel="Previous"
                 renderOnZeroPageCount={null}
                 className="pagination flex my-3 float-right"
             />

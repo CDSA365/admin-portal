@@ -30,6 +30,7 @@ import ForgotPassword from './views/forgot-password'
 import ResetPassword from './views/reset-password'
 import ViewLeadDetail from './views/view-lead-detail'
 import ViewCategory from './views/view-category'
+import ListUsers from './views/list-users'
 
 // ROUTE PATHS
 const path = {
@@ -59,6 +60,7 @@ const path = {
     forgotPassword: '/forgot-password',
     resetPassword: '/reset-password/:token',
     viewLeadDetail: '/dashboard/leads/view/:id',
+    users: '/dashboard/users',
 }
 
 // APPLICATION
@@ -100,6 +102,7 @@ const App = () => {
                 />
                 <Route element={<PrivateOutlet />}>
                     <Route exact path="/" element={<Home />} />
+                    <Route exact path={path.users} element={<ListUsers />} />
                     <Route
                         exact
                         path={path.addTrainers}

@@ -1,5 +1,6 @@
 import { TrashIcon } from '@heroicons/react/solid'
 import axios from 'axios'
+import { Button } from 'flowbite-react'
 import moment from 'moment-timezone'
 import React, { useEffect, useState } from 'react'
 import Card from '../components/card'
@@ -123,13 +124,13 @@ const Announcements = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div>
-                        <button
-                            className="btn btn-info float-right"
+                    <div className="flex flex-wrap justify-end">
+                        <Button
+                            className="float-right"
                             onClick={makeAnnouncement}
                         >
                             Make Announcement
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </Card>
